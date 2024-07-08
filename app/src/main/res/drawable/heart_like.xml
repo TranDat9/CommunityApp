@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/heart_liked.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24.0"
+    android:viewportHeight="24.0">
+
+    <!-- Chèn hình ảnh từ tệp heart.png -->
+    <bitmap
+        android:src="@drawable/heart_liked"
+        android:width="24dp"
+        android:height="24dp"
+        android:gravity="center"/>
+
+</vector>

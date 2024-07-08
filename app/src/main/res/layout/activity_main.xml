@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/save_article_button"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="40dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.6"
+        app:srcCompat="@drawable/unsave_articles_black" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="18dp"
+        android:text="New Feed"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+    </androidx.cardview.widget.CardView>
+
+    <SearchView
+        android:id="@+id/search_blog"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/search_shape"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/blogRecycleview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@id/navBottom"
+        app:layout_constraintEnd_toEndOf="@+id/search_blog"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/search_blog"
+        app:layout_constraintTop_toBottomOf="@+id/search_blog"
+        app:layout_constraintVertical_bias="0.018"
+
+        tools:itemCount="2"
+        tools:listitem="@layout/blog_item" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingAddArticleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@color/blue"
+        android:clickable="true"
+        app:tint="@color/white"
+        app:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toTopOf="@id/navBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:borderWidth="2dp"
+        app:shapeAppearanceOverlay="@style/round"
+        app:srcCompat="@drawable/add" />
+
+    <LinearLayout
+        android:id="@+id/navBottom"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/rounded_background"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:layout_margin="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/blogRecycleview">
+
+        <ImageView
+            android:id="@+id/navimgHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:src="@drawable/chat" />
+
+        <ImageView
+            android:id="@+id/navimgBlog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:src="@drawable/navblog" />
+
+        <ImageView
+            android:id="@+id/navimgprofile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:src="@drawable/navprofile" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

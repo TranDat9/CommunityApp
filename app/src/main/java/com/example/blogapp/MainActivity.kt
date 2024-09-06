@@ -23,12 +23,18 @@ class MainActivity : AppCompatActivity() {
 
       private  lateinit var databaseReference: DatabaseReference
       private val blogItems = mutableListOf<BlogItemModel>()
-    private lateinit var auth:FirebaseAuth
+      private lateinit var auth:FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         //
+
+        binding.navChat.setOnClickListener {
+            var intent = Intent()
+
+            startActivity(Intent(this,ListChatActivity::class.java))
+        }
         binding.profileImage.setOnClickListener {
             startActivity(Intent(this,ProfileActivity::class.java))
         }
@@ -75,7 +81,6 @@ class MainActivity : AppCompatActivity() {
                 // notify data change
                 blogAdapter.notifyDataSetChanged()
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@MainActivity,"Blog Data load failed",Toast.LENGTH_LONG).show()
             }
@@ -97,11 +102,6 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-
-
-
-
-
         })
     }
 
@@ -109,7 +109,10 @@ class MainActivity : AppCompatActivity() {
         val userReference = FirebaseDatabase.getInstance("https://blogapp-46ef8-default-rtdb.asia-southeast1.firebasedatabase.app").reference.child("users").child(userId)
         userReference.child("profileImage").addValueEventListener(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+
                 val profileImageUrl = snapshot.getValue(String::class.java)
+
+
                 if(profileImageUrl!=null)
                 {
                     Glide.with(this@MainActivity)

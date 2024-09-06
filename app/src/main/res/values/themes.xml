@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.BlogApp" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Base.Theme.BlogApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -18,6 +18,5 @@
     <style name="Theme.BlogApp" parent="Base.Theme.BlogApp"/>
     <style name="round" parent="" >
          <item name="cornerSize">50%</item>
-
     </style>
 </resources>

@@ -11,6 +11,7 @@ import com.example.blogapp.MainActivity
 import com.example.blogapp.R
 import com.example.blogapp.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 
@@ -59,6 +60,18 @@ class SignInActivity : AppCompatActivity() {
                         }
                     }
             }
+        }
+
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        val currentUser: FirebaseUser? = auth.currentUser
+        if(currentUser!=null)
+        {
+            startActivity(Intent(this,MainActivity::class.java))
+            finish()
         }
 
     }

@@ -102,7 +102,7 @@ class SignUpActivity : AppCompatActivity() {
                                     "User Register Successfully",
                                     Toast.LENGTH_LONG
                                 ).show();
-                                startActivity(Intent(this, WelcomeActivity::class.java))
+                                startActivity(Intent(this, SignInActivity::class.java))
                                 finish()
                             }
 

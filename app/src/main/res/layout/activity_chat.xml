@@ -16,6 +16,7 @@
     >
 
     <LinearLayout
+        android:elevation="8dp"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,7 +55,7 @@
             >
             <TextView
                 android:id="@+id/name"
-                android:text="profile name"
+                android:text="dat02"
                 android:textColor="@color/white"
                 android:textSize="19sp"
                 android:textStyle="bold|normal"
@@ -87,27 +88,69 @@
 
 </androidx.appcompat.widget.Toolbar>
 
-    <LinearLayout
-        android:id="@+id/linear01"
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_below="@id/toolbar"
         >
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/linear01"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="visible"
+
+
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearImagesend"
+        android:layout_above="@+id/linear02"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
-
+        app:cardCornerRadius="8dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
         >
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:src="@drawable/close"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginEnd="10dp"
+            >
 
-    </androidx.recyclerview.widget.RecyclerView>
+        </ImageButton>
+    <ImageView
+
+        android:id="@+id/imagesend"
+        android:layout_width="80dp"
+        android:src="@drawable/man"
+        android:layout_height="80dp"/>
     </LinearLayout>
+
+
     
     <LinearLayout
         android:id="@+id/linear02"
-        android:layout_above="@id/linear01"
+        android:layout_above="@id/scrollView"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:weightSum="2"
@@ -126,11 +169,13 @@
         android:layout_marginBottom="8dp"
         >
         <LinearLayout
+           android:id="@+id/linearChat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:baselineAligned="false"
             android:orientation="horizontal"
             android:padding="8dp"
+            android:visibility="gone"
             >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -168,15 +213,54 @@
                 >
             </ImageView>
 
+
             <ImageView
-                android:id="@+id/camera"
+                android:id="@+id/btnMic"
                 android:layout_width="180dp"
                 android:layout_height="40dp"
                 android:layout_weight="3"
                 android:padding="9dp"
-                android:src="@drawable/camera"
+                android:src="@drawable/mic"
                 >
             </ImageView>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearRecord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:padding="8dp"
+            >
+            <ImageView
+                android:id="@+id/btnDelete"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_weight="3"
+                android:padding="9dp"
+                android:src="@drawable/close"
+                >
+            </ImageView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100px"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                >
+                <com.example.blogapp.WaveformView
+                    android:id="@+id/waveformView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100px">
+
+                </com.example.blogapp.WaveformView>
+
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -194,6 +278,8 @@
 
     </ImageView>
 
+
     </LinearLayout>
+
 
 </RelativeLayout>

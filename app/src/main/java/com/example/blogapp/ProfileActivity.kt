@@ -1,5 +1,6 @@
 package com.example.blogapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.widget.Toast
@@ -10,12 +11,14 @@ import com.example.blogapp.adapter.ViewPagerAdapter
 import com.example.blogapp.databinding.ActivityProfileBinding
 import com.example.blogapp.fragment.MyPostFragment
 import com.example.blogapp.fragment.MyReelsFragment
+import com.example.blogapp.register.SignInActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.messaging.FirebaseMessaging
 
 class ProfileActivity : AppCompatActivity() {
     private  val binding: ActivityProfileBinding by lazy {
@@ -34,6 +37,22 @@ class ProfileActivity : AppCompatActivity() {
 
         binding.viewPager.adapter = viewPagerAdapter
         binding.tabLayout.setupWithViewPager(binding.viewPager)
+
+
+
+        binding.logout.setOnClickListener {
+            auth.signOut()
+            val intent = Intent(this,
+                SignInActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
+
+        binding.btnback.setOnClickListener {
+            finish()
+        }
+
 
         auth = FirebaseAuth.getInstance()
 

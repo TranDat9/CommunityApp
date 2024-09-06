@@ -26,6 +26,8 @@ class BlogAdapter(private val items : MutableList<BlogItemModel>):
     private val currentUser= FirebaseAuth.getInstance().currentUser
 
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BlogAdapter.BlogViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = BlogItemBinding.inflate(inflater,parent,false)
@@ -95,13 +97,19 @@ class BlogAdapter(private val items : MutableList<BlogItemModel>):
             }
 
             binding.profile.setOnClickListener {
-                val context =binding.root.context
-                val intent =Intent(context,ChatActivity::class.java)
-                intent.putExtra("uid",userId)
-                intent.putExtra("name",blogItemModel.username.toString())
-                intent.putExtra("image",blogItemModel.profileImage.toString())
-               // intent.putExtra("blogItem",blogItemModel)
-                context.startActivity(intent)
+                val context = binding.root.context
+                val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
+
+                if (currentUserId == userId) {
+                    val intent = Intent(context, ProfileActivity::class.java)
+                    context.startActivity(intent)
+                } else {
+                    val intent = Intent(context, ChatActivity::class.java)
+                    intent.putExtra("uid", userId)
+                    intent.putExtra("name", blogItemModel.username.toString())
+                    intent.putExtra("image", blogItemModel.profileImage.toString())
+                    context.startActivity(intent)
+                }
             }
 
 

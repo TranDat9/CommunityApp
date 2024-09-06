@@ -4,7 +4,6 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data  class Comment(
-
     val comment: String?="null",
     val date: String? ="null",
     val profileImage: String? ="null",
